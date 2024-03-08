@@ -1,15 +1,43 @@
 package src.main.java;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class ParenSymmetry {
 
-
+//false-{"(", "((", ")", "", "(()())((())))"};
+//true-{"()", "(())", "(((())))", "", "(()())((()))", "( )", "( () ( ) )"}
+    //use a for loop that goes through each string's charachter
+    //check if open or closed parenthesis by using a counter
     private Boolean isBalanced(String s) {
-        // implement this method
-        return null;
+        int open=0;
+        int closed=0;
+       for (int i=0;i<s.length();i++){
+
+       if (s.charAt(i)=='('){
+           open=open+1;
+
+       }
+       if (s.charAt(i)==')'){
+           closed=closed+1;
+
+       }
+
+
+       }
+       if(open==closed){
+          return true;
+
+       }else{
+           return false;
+       }
     }
 
-    private void checkFile(String filename) {
+    private void checkFile(String filename) throws FileNotFoundException {
         // open file named filename
+        File file = new File(filename);
+        Scanner scanner = new Scanner(file);
 
         // for each line in the file
             // read the line
